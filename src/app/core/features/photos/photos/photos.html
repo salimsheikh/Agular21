@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-warning">
+                Photos
+            </div>
+            <div class="cart-body p-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>URL</th>
+                            <th class="align-middle text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (pagedPhotos.length > 0) {
+                        @for (item of pagedPhotos; track item.id) {
+                        <tr>
+                            <td>{{item.title}}</td>
+                            <td>{{item.url}}</td>
+                            <td class="align-middle">
+                                <div class="d-flex justify-content-center align-items-center gap-1">
+                                    <button class="btn btn-sm btn-primary" (click)="photoEdit(item)"><i
+                                            class="bi bi-pencil me-1"></i></button>
+                                    <button class="btn btn-sm btn-danger" (click)="photoDelete(item)"><i
+                                            class="bi bi-trash me-1"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                        }
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+
+
+                        <li class="page-item" [class.disabled]="currentPage === 1">
+                            <button class="page-link" (click)="prevPage()">Previous</button>
+                        </li>
+
+                        <!-- @for (page of [].constructor(totalPages); let i = $index; track i) {
+                            <li class="page-item" [class.active]="currentPage === i + 1">
+                                <button class="page-link" (click)="goToPage(i + 1)">
+                                    {{ i + 1 }}
+                                </button>
+                            </li>
+                            } -->
+
+                        <li class="page-item" [class.disabled]="currentPage === totalPages">
+                            <button class="page-link" (click)="nextPage()">Next</button>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-warning">
+                @if(newPhoto.id && newPhoto.id > 0){
+                Update Photo
+                }@else{
+                Add Photo
+                }
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <label for="albumId">Album ID</label>
+                            <input type="text" id="albumId" name="albumId" [(ngModel)]="newPhoto.albumId"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" [(ngModel)]="newPhoto.title"
+                                class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <label for="url">URL</label>
+                            <input type="text" id="url" name="url" [ngModel]="newPhoto.url" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <label for="thumbnailUrl">Thumbnail Url</label>
+                            <input type="text" id="thumbnailUrl" name="thumbnailUrl" [(ngModel)]="newPhoto.thumbnailUrl"
+                                class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col text-center">
+                            <button class="btn btn-secondary mx-2" (click)="formReset()">Reset</button>
+                            @if(newPhoto.id && newPhoto.id > 0){
+                            <button class="btn btn-primary mx-2" (click)="onUpdatePhoto()">Update</button>
+                            }@else{
+                            <button class="btn btn-primary mx-2" (click)="onSavePhoto()">Save</button>
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

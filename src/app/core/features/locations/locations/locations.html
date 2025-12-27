@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-12 col-md-8">
+        <div class="card">
+            <div class="card-header bg-warning">
+                Locations
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Location</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(item of pagedItems; track item.locationId){
+                            <tr>
+                                <td>{{item.locationId}}</td>
+                                <td>{{item.locationName}}</td>
+                                <td class="align-middle">
+                                <div class="d-flex justify-content-center align-items-center gap-1">
+                                    <button class="btn btn-sm btn-primary" (click)="onEdit(item)"><i
+                                            class="bi bi-pencil me-1"></i></button>
+                                    <button class="btn btn-sm btn-danger" (click)="onDelete(item)"><i
+                                            class="bi bi-trash me-1"></i></button>
+                                </div>
+                            </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary btn-sm" [class.disabled]="this.currentPage == 1" (click)="this.prevPage()">Previous</button>
+                    <button class="btn btn-primary btn-sm" [class.disabled]="this.currentPage == totalPages" (click)="this.nextPage()">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+        <div class="card">
+            <div class="card-header bg-warning">
+                @if(newItem.locationId > 0){
+                    Location Update
+                } @else {
+                    Location Add
+                }
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="locationName">Location Name</label>
+                            <input type="text" id="locationName" name="locationName" class="form-control" [ngModel]="newItem.locationName">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-end">
+                            <button class="btn btn-success me-2">
+                                @if(newItem.locationId > 0){
+                                    Update
+                                } @else {
+                                    Add
+                                }
+                            </button>
+                            <button class="btn btn-secondary" (click)="formReset()">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
