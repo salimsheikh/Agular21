@@ -2,3 +2,11 @@
 /* .navbar-nav .nav-link.active{
     color: red;
 } */
+
+.page-wrapper {
+  min-height: 100vh;
+  position: relative;
+}
+.w-action{
+  width: 110px;
+}

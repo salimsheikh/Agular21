@@ -72,7 +72,12 @@ export class Locations implements OnInit {
   }
 
   onDelete(data:LocationListModel){
-
+    alert(data.locationId);
+    this.locationService.onDelete(data.locationId).subscribe({
+      next: res => { console.log(res);this.loadItems();},
+      error: err => {console.log(err)}
+    });
+    
   }
 
   formReset(){
