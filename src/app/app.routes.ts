@@ -11,6 +11,7 @@ import { Forbidden } from './core/error-pages/forbidden/forbidden';
 import { ServerError } from './core/error-pages/server-error/server-error';
 import { ServerDown } from './core/error-pages/server-down/server-down';
 import { NotFound } from './core/error-pages/not-found/not-found';
+import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
 
@@ -23,6 +24,7 @@ export const routes: Routes = [
   // Admin layout
   {
     path: '',
+    canActivate: [authGuard],
     component: AdminLayout,
     children: [
       { path: 'dashboard', component: Dashboard },

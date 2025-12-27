@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/dashboard">Photos</a>
+    <a class="navbar-brand" routerLink="/dashboard">Resume Scanner</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,8 +13,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/locations">Locations</a>
         </li>
-
-        
+<!--                 
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/photos">Photos</a>
         </li>
@@ -23,10 +22,16 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/prices">Pricing</a>
-        </li>
+        </li> -->
       </ul>
-      <span class="navbar-text">
-        Navbar text with an inline element
+      <span>
+        <button
+          type="button"
+          class="btn btn-sm text-light"
+          (click)="logout()">
+          Logout
+        </button>
+
       </span>
     </div>
   </div>
